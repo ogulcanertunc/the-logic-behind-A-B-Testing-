@@ -18,15 +18,6 @@ def basic_analysis(dataframe):
     print("######################Dataframe's Describe################################", "\n\n")
     print(dataframe.describe([0.01, 0.05, 0.10, 0.25, 0.50, 0.75, 0.90, 0.95, 0.99]).T)
     print("######################Variables Distribution################################", "\n\n")
-    for col_name in dataframe.columns:
-        plt.title("Histogram for " + col_name)
-        sns.distplot(dataframe[col_name], color="skyblue")
-        plt.show()
-
-    for col_name in dataframe.columns:
-        plt.title("Box Plot for " + col_name)
-        dataframe.boxplot(column=[col_name], return_type=None)
-        plt.show()
 
 def outlier_thresholds(dataframe, variable, low_quantile=0.01, up_quantile=0.99):
     quantile_one = dataframe[variable].quantile(low_quantile)
