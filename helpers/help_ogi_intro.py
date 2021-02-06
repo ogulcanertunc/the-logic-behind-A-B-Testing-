@@ -27,6 +27,14 @@ def outlier_thresholds(dataframe, variable, low_quantile=0.01, up_quantile=0.99)
     low_limit = quantile_one - 1.5 * interquantile_range
     return low_limit, up_limit
 
+def is_any_outlier(dataframe, variable):
+    low, upper= outlier_thresholds(dataframe, variable)
+    dataframe_out = dataframe[~((dataframe[variable] < low) |(dataframe[variable] > upper))]
+    dataframe.shape[0] == dataframe_out.shape[0]
+    if dataframe.shape[0] == dataframe_out.shape[0]:
+        print("Dataset has no outliers.")
+    else:
+        print("Dataset has outliers.")
 
 
 def ogi_AB(a_dataframe, b_dataframe, variable):
@@ -128,11 +136,3 @@ def ogi_AB(a_dataframe, b_dataframe, variable):
     else:
         print("Something might have gone wrong, do you want to review the data?")
 
-def is_any_outlier(dataframe, variable):
-    low, upper= outlier_thresholds(dataframe, variable)
-    dataframe_out = dataframe[~((dataframe[variable] < low) |(dataframe[variable] > upper))]
-    dataframe.shape[0] == dataframe_out.shape[0]
-    if dataframe.shape[0] == dataframe_out.shape[0]:
-        print("Dataset has no outliers.")
-    else:
-        print("Dataset has outliers.")
