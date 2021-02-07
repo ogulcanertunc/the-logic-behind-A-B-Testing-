@@ -129,10 +129,6 @@ def ogi_AB(a_dataframe, b_dataframe, variable):
             print("Our p value from the Mann Whitney U Test is less than 5%(0.05). This shows that we can reject H0."
                   "  Thus, with this result, we can say that there is a significant difference between A and B in " + variable+ " variable.", "\n\n")
 
-            if statistics.median(a_dataframe["Earning"]) > statistics.median(b_dataframe["Earning"]):
-                print("Median of A Earning in ", variable, " is greater than B Earning", "\n\n")
-            else:
-                print("Median of B Earning in ", variable,  " is greater than A Earning", "\n\n")
     else:
         print("Something might have gone wrong, do you want to review the data?")
 
